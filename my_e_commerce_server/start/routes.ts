@@ -29,5 +29,5 @@ Route.get('/', async () => {
 Route.post('/api/login/provider', 'CustomersController.Providerlogin')
 Route.post('/api/register', 'CustomersController.register')
 Route.post('/api/login', 'CustomersController.login')
-Route.post('/api/dashboard', 'CustomersController.dashboard')
+Route.get('/api/dashboard', 'CustomersController.dashboard')
 Route.get('/api/logout', 'CustomersController.logOut')

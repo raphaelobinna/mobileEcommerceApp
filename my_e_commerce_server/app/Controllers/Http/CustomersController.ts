@@ -16,6 +16,7 @@ export default class CustomersController {
     public async Providerlogin({ request, response, auth }: HttpContextContract) {
         const token = request.input("token");
         const provider = request.input("provider")
+        console.log('yes', token)
         if (provider !== ProviderStatus.FACEBOOK || ProviderStatus.GOOGLE){
             response.json({status: 400, message: 'Invalid input for provider field'})
         }
@@ -147,9 +148,17 @@ export default class CustomersController {
 
       public async dashboard({ auth, response}: HttpContextContract) {
         
-         await auth.use('api').authenticate()
+         try {
+             console.log('tried')
+            await auth.use('api').authenticate()
+            console.log('good')
+            response.json({status: 201, data: auth.user!})
+         } catch (error) {
+             console.log('error', error)
+             response.json({status: 401, message: 'Unauthenticated User'})
+         }
        
-        response.json({status: 201, data: auth.user!})
+       
       }
 
       public async logOut({auth, response}: HttpContextContract) {

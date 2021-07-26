@@ -18,7 +18,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
   | The primary connection for making database queries across the application
   | You can use any key from the `connections` object defined in this same
   | file.
-  |
+  | 
   */
   connection: Env.get('DB_CONNECTION'),
 
@@ -43,7 +43,7 @@ const databaseConfig: DatabaseConfig & { orm: Partial<OrmConfig> } = {
         password: Env.get('MYSQL_PASSWORD', ''),
         database: Env.get('MYSQL_DB_NAME'),
       },
-      healthCheck: false,
+      healthCheck: false, 
 			debug: false,
     },
 
